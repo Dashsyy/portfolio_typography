@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useMemo, useRef } from "react";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { registerGsapPlugins } from "@/lib/gsap/register";
 import useReducedMotion from "@/lib/hooks/useReducedMotion";
 

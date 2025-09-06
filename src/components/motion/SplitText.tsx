@@ -1,16 +1,40 @@
 "use client";
-import React, { useMemo, useRef } from "react";
-type Props = { text: string; as?: keyof JSX.IntrinsicElements; className?: string; itemClass?: string };
-export default function SplitText({ text, as = "h1", className = "", itemClass = "inline-block" }: Props) {
-  const Tag = as as any;
-  const chars = useMemo(() => text.split("").map((c, i) => ({ c, i })), [text]);
-  const refs = useRef<HTMLSpanElement[]>([]);
-  refs.current = [];
-  const setRef = (el: HTMLSpanElement | null) => el && refs.current.push(el);
+import React, { JSX } from "react";
+
+type PolymorphicProps<T extends keyof JSX.IntrinsicElements> = {
+  text: string;
+  as?: T;
+  className?: string;
+  itemClass?: string;
+} & Omit<JSX.IntrinsicElements[T], "children">;
+
+export default function SplitText<T extends keyof JSX.IntrinsicElements = "h1">({
+  text,
+  as,
+  className = "",
+  itemClass = "inline-block",
+  ...rest
+}: PolymorphicProps<T>) {
+  const Tag = (as ?? "h1") as React.ElementType;
+
+  const chars = React.useMemo(
+    () => text.split("").map((c, i) => ({ c, i })),
+    [text]
+  );
+
+  const refs = React.useRef<Array<HTMLSpanElement | null>>([]);
+
   return (
-    <Tag className={className} data-split>
+    <Tag className={className} data-split {...rest}>
       {chars.map(({ c, i }) => (
-        <span key={i} ref={setRef} aria-hidden className={itemClass}>
+        <span
+          key={i}
+          ref={(el) => {
+            refs.current[i] = el;
+          }}
+          aria-hidden
+          className={itemClass}
+        >
           {c === " " ? "\u00A0" : c}
         </span>
       ))}

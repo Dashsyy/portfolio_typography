@@ -1,7 +1,5 @@
 "use client";
-import KineticParagraph from "@/components/motion/KineticParagraph";
 import { profile } from "@/data/profile";
-import EditorialParagraph from "../motion/EditorialParagraph";
 import ScrambleText from "../motion/ScrambleText";
 
 export default function About() {
@@ -14,8 +12,6 @@ export default function About() {
       <div className="mx-auto max-w-7xl px-6 py-20">
         <h2 id="about-title" className="sr-only">About</h2>
 
-        {/* <KineticParagraph>{profile.summary}</KineticParagraph> */}
-        {/* <EditorialParagraph>{profile.summary}</EditorialParagraph> */}
         <ScrambleText
           text={profile.summary}
           trigger="visible"
