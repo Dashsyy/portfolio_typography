@@ -2,18 +2,19 @@ export const profile = {
   name: "Sunhour Heng",
   title: "Full-stack Developer",
   location: "Phnom Penh, Cambodia",
-  phone: "+855 12 333 333",
+  // phone: "+855 12 333 333",
   email: "sunhour012@gmail.com",
   summary:
-    "Well-qualified Full Stack Developer familiar with a wide range of programming utilities and languages. Knowledgeable in backend and frontend development requirements. Handles any part of the process with ease. Collaborative team player with excellent technical abilities offering 2+ years of related experience.",
+    "Application developer at Smart Axiata building and maintaining production telecom systems used nationwide. Core maintainer of RetailOps — the primary portal for Smart retail agents across Cambodia — and active developer on the Smart x ABA Mini App, a fintech integration letting ABA Bank customers purchase telecom services directly from their banking app. My work spans Laravel backends, React and Vue frontends, Kubernetes deployments, and integrations with payment gateways, eKYC, BSS billing, and network provisioning systems.",
   competencies: [
-    "PHP Development",
-    "API Integration",
-    "Application Development",
-    "Responsive Web Design",
-    "SEO Best Practices",
-    "Team Collaboration",
-    "Technical Analysis",
+    "Laravel / PHP 8",
+    "React / Vue.js",
+    "Microservice Architecture",
+    "Kubernetes & ArgoCD",
+    "GitLab CI/CD",
+    "BSS & Telecom Integration",
+    "Payment & eKYC Integration",
+    "MariaDB / MySQL",
   ],
   work: [
     {

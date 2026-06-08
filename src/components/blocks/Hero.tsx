@@ -1,64 +1,34 @@
 "use client";
 import { useRef, useEffect } from "react";
-import SplitText from "@/components/motion/SplitText";
 import { gsap } from "gsap";
-import { registerGsapPlugins } from "@/lib/gsap/register";
 
 export default function Hero() {
-  const heroRef = useRef<HTMLDivElement | null>(null);
-  const sublineRef = useRef<HTMLParagraphElement | null>(null);
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    registerGsapPlugins();
-    if (!heroRef.current) return;
-
-    const chars = heroRef.current.querySelectorAll("[data-split] > span:not(.sr-only)");
-
+    if (!ref.current) return;
     gsap.fromTo(
-      chars,
-      { yPercent: 120, rotateX: 90, opacity: 0 },
-      {
-        yPercent: 0,
-        rotateX: 0,
-        opacity: 1,
-        duration: 0.8,
-        ease: "power3.out",
-        stagger: { each: 0.02, from: "random" },
-      }
+      ref.current,
+      { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 0.7, ease: "power2.out" }
     );
-
-    if (sublineRef.current) {
-      gsap.fromTo(
-        sublineRef.current,
-        { clipPath: "inset(0 100% 0 0)", opacity: 0 },
-        { clipPath: "inset(0 0% 0 0)", opacity: 1, duration: 1, delay: 0.3, ease: "power2.out" }
-      );
-    }
   }, []);
 
   return (
-    <header className="relative overflow-hidden bg-white text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100">
-      <div className="mx-auto max-w-7xl px-6 pt-28 pb-20">
-        <div ref={heroRef} className="max-w-3xl">
-          <SplitText
-            as="h1"
-            text="Sunhour Heng"
-            className="text-5xl md:text-7xl font-extrabold tracking-tight leading-[1.1]"
-          />
-          <SplitText
-            as="h2"
-            text="Full-stack Developer"
-            className="mt-4 text-2xl md:text-3xl font-semibold text-neutral-600 dark:text-neutral-300"
-          />
-          <p
-            ref={sublineRef}
-            className="mt-6 text-lg text-neutral-600 dark:text-neutral-300"
-          >
-            Experienced in Laravel, React, Vue, and microservices. Building scalable, 
-            reliable systems and beautiful user experiences.
-          </p>
-        </div>
+    <section className="mx-auto max-w-7xl px-6 pt-24 pb-20 md:pt-32 md:pb-28">
+      <div ref={ref} style={{ opacity: 0 }}>
+        <p className="text-xs uppercase tracking-widest text-neutral-400 mb-8">
+          Application Developer — Smart Axiata · Phnom Penh
+        </p>
+        <h1 className="text-6xl md:text-8xl font-bold tracking-tight leading-[0.92] mb-10">
+          Sunhour<br />Heng
+        </h1>
+        <p className="max-w-lg text-base text-neutral-500 dark:text-neutral-400 leading-relaxed">
+          I build and maintain production telecom systems at Smart Axiata —
+          from the nationwide RetailOps retail portal to fintech integrations,
+          broadband provisioning, and microservice infrastructure.
+        </p>
       </div>
-    </header>
+    </section>
   );
 }
