@@ -2,7 +2,7 @@ export const profile = {
   name: "Sunhour Heng",
   title: "Full-stack Developer",
   location: "Phnom Penh, Cambodia",
-  // phone: "+855 12 333 333",
+  phone: "+855 12 111 111",
   email: "sunhour012@gmail.com",
   summary:
     "Application developer at Smart Axiata building and maintaining production telecom systems used nationwide. Core maintainer of RetailOps — the primary portal for Smart retail agents across Cambodia — and active developer on the Smart x ABA Mini App, a fintech integration letting ABA Bank customers purchase telecom services directly from their banking app. My work spans Laravel backends, React and Vue frontends, Kubernetes deployments, and integrations with payment gateways, eKYC, BSS billing, and network provisioning systems.",
